@@ -1,0 +1,23 @@
+1.SELECT * FROM users
+
+2.SELECT * FROM users ORDER BY last_name
+
+3.SELECT * FROM users ORDER BY registration_date DESC LIMIT 1
+
+4.SELECT * FROM users WHERE MONTH(birthdate) = 01
+
+5.SELECT COUNT(*) FROM users
+
+6.SELECT * FROM users JOIN addresses ON users.address_id = addresses.id ORDER BY city
+
+7.SELECT * FROM users JOIN addresses ON users.address_id = addresses.id WHERE number is NULL
+
+8.SELECT * FROM products WHERE price > 1000
+
+9.SELECT * FROM products JOIN pictures ON products.id = pictures.product_id
+
+10.SELECT * FROM products JOIN (categories JOIN products_categories ON categories.id = products_categories.category_id) ON products.id = products_categories.product_id WHERE title = "Voyage"
+
+11.SELECT users.*, COUNT(orders.user_id) as numberOfOrder FROM users JOIN orders ON users.id = orders.user_id GROUP BY id HAVING COUNT(orders.user_id) > 10
+
+12.SELECT * FROM products JOIN (products_orders JOIN (orders JOIN users ON users.id = orders.user_id) ON orders.id = products_orders.order_id) ON products_orders.product_id = products.id WHERE users.id = (SELECT id FROM users ORDER BY users.registration_date ASC LIMIT 1)
